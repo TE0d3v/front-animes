@@ -187,7 +187,7 @@ export default function Login() {
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
                 Não tem uma conta?{' '}
-                <a href="#" className="font-medium text-blue-600 hover:text-blue-500 transition duration-200">
+                <a href="/register" className="font-medium text-blue-600 hover:text-blue-500 transition duration-200">
                   Cadastre-se aqui
                 </a>
               </p>
