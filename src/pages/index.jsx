@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import instance from '@/instance/api';
+import { useRouter } from 'next/router';
 
 export default function Login() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -16,7 +18,7 @@ export default function Login() {
       ...prev,
       [name]: value
     }));
-
+    
     // Limpar erro quando o usuário começar a digitar
     if (errors[name]) {
       setErrors(prev => ({
@@ -28,19 +30,18 @@ export default function Login() {
 
   const validateForm = () => {
     const newErrors = {};
-
+    
     if (!formData.email) {
       newErrors.email = 'Email é obrigatório';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email inválido';
     }
-
+    
     if (!formData.password) {
       newErrors.password = 'Senha é obrigatória';
     } else if (formData.password.length < 6) {
       newErrors.password = 'Senha deve ter pelo menos 6 caracteres';
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -49,12 +50,13 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await instance.post('/auth/login', formData)
+      const response = await instance.post('/login', formData)
 
-      alert('Login bem-sucedido!'); // Aqui você pode redirecionar ou fazer outra ação
+      localStorage.setItem('token', response.data.token)
+      router.push('/animes')
     } catch (error) {
-      console.log('Erro ao fazer login:', error);
-      alert('Erro');
+      console.log(error)
+      alert("ERRROUUU!")
     }
   };
 
@@ -188,7 +190,7 @@ export default function Login() {
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
                 Não tem uma conta?{' '}
-                <a href="/register" className="font-medium text-blue-600 hover:text-blue-500 transition duration-200">
+                <a href="register" className="font-medium text-blue-600 hover:text-blue-500 transition duration-200">
                   Cadastre-se aqui
                 </a>
               </p>
