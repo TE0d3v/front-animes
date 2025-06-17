@@ -48,8 +48,9 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try{
+    try {
       const response = await instance.post('/auth/login', formData)
+
       alert('Login bem-sucedido!'); // Aqui você pode redirecionar ou fazer outra ação
     } catch (error) {
       console.log('Erro ao fazer login:', error);
