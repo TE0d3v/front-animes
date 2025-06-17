@@ -61,10 +61,10 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Animes v3 - Login</title>
+        <title>Animes - Login</title>
         <meta name="description" content="Faça login para acessar a plataforma de animes" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/login.png" />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-4 sm:px-6 lg:px-8">
