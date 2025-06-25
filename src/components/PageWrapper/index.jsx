@@ -31,8 +31,8 @@ export default function PageWrapper({ children }) {
     return (
         <div className="w-full min-h-screen flex flex-col">
             <Header />
-            <div className="w-full h-full pt-[65px]">
-            {children}
+            <div className="w-full h-full pt-[75px] px-8 bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen">
+                {children}
             </div>
         </div>
     )
