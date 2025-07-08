@@ -55,8 +55,8 @@ const CardAnime = ({ anime }) => {
           <img
             src={imageUrl}
             alt={title}
-            className="object-cover group-hover:scale-110 transition-transform duration-300 w-full h-full"
-          />
+            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+        />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
             <span className="text-gray-400 text-4xl">🎬</span>

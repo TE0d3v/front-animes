@@ -1,6 +1,6 @@
 import instance from "@/instance/api"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import Header from "../Header"
 
 export default function PageWrapper({ children }) {
@@ -16,15 +16,20 @@ export default function PageWrapper({ children }) {
 
         async function heartBeat() {
             try {
-                await instance.get('/heartbeat')
+                const user = await instance.get('/profile')
+
+                localStorage.setItem(
+                    'user',
+                    JSON.stringify(user.data)
+                )
             } catch (error) {
                 localStorage.removeItem('token')
+                localStorage.removeItem('user')
                 router.push('/')
             }
         }
 
         heartBeat()
-        // Simula um delay para mostrar o loading
         setLoading(false)
     }, [])
 
